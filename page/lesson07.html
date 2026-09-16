@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 7: ระบบการเชื่อมโยง (Hyperlinks)</title>
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: "Sarabun", "Tahoma", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0 0 60px 0;
+        color: #222;
+    }
+
+    .banner {
+        background-color: #0d3d9c;
+        color: white;
+        padding: 24px 32px;
+    }
+
+    .banner .chapter {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .banner .subtitle {
+        font-size: 16px;
+        margin: 6px 0 0 0;
+        font-weight: 400;
+    }
+
+    .content {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 24px 20px;
+    }
+
+    .section-title {
+        background-color: #e8eefc;
+        color: #0d3d9c;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 4px;
+        margin: 28px 0 14px 0;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.9;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .page-ref {
+        color: #888;
+        font-size: 13px;
+    }
+
+    code {
+        background-color: #eef1f6;
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-family: "Consolas", monospace;
+        color: #b3261e;
+    }
+    .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: hsl(214, 41%, 97%);
+            background-color: #28a745;
+            border: 1px solid lch(1.92% 0 296.81 / 0.302);
+            padding: 5px 11px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <p class="chapter">บทที่ 7</p>
+    <p class="subtitle">ระบบการเชื่อมโยง (Hyperlinks)</p>
+</div>
+ <div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+<div class="content">
+
+    <div class="section-title">1. พื้นฐานการทำลิงก์</div>
+    <ul>
+        <li><b>แท็ก &lt;a&gt; (Anchor):</b> เครื่องมือหลักในการสร้างลิงก์เชื่อมโยง ต้องใช้คู่กับแอตทริบิวต์ <code>href</code> เสมอ เพื่อระบุปลายทางที่ต้องการพาผู้ใช้ไป <span class="page-ref">(p. 3)</span></li>
+        <li><b>การเชื่อมโยงภายในเว็บไซต์:</b> ใช้ Relative Path พิมพ์ชื่อไฟล์เป้าหมายลงใน <code>href</code> โดยตรง เช่น <code>&lt;a href="about.html"&gt;</code> เหมาะกับการทำเมนูนำทางในเว็บเดียวกัน <span class="page-ref">(p. 3)</span></li>
+        <li><b>การเชื่อมโยงภายนอก (External Link):</b> ใช้ Absolute Path คือ URL เต็มรูปแบบที่ต้องขึ้นต้นด้วย <code>http://</code> หรือ <code>https://</code> เสมอ เช่น <code>&lt;a href="https://www.facebook.com"&gt;</code> <span class="page-ref">(p. 4)</span></li>
+    </ul>
+    <img src="../pic/ez.png" alt="ตัวย่าง" width="600" height="500">
+
+    <div class="section-title">2. เทคนิคการเชื่อมโยง</div>
+    <ul>
+        <li><b>target="_blank":</b> สั่งให้ลิงก์เปิดในแท็บใหม่แทนการเปิดทับหน้าเดิม ใช้กับลิงก์ภายนอกเสมอ เพื่อไม่ให้ผู้ใช้หลุดออกจากเว็บไซต์ของเรา <span class="page-ref">(p. 6)</span></li>
+        <li><b>Anchor Link (ลิงก์ภายในหน้าเดิม):</b> ทำงานเป็นคู่ — สร้างจุดหมายปลายทางด้วย <code>id="ชื่อ"</code> ที่หัวข้อเป้าหมาย แล้วสร้างลิงก์กระโดดด้วย <code>href="#ชื่อ"</code> เหมาะกับหน้าเว็บยาวๆ ที่มีสารบัญ <span class="page-ref">(p. 6-7)</span></li>
+    </ul>
+    <img src="../pic/ez1.png" alt="ตัวย่าง" width="600" height="500">
+    <img src="../pic/ez2.png" alt="ตัวย่าง" width="600" height="500">
+
+    <div class="section-title">3. การปรับแต่งลิงก์ด้วย CSS</div>
+    <ul>
+        <li><b>สถานะของลิงก์ (Link States):</b> ลิงก์มี 4 สถานะที่กำหนดสไตล์แยกกันได้ผ่าน Pseudo-class:
+            <ul style="margin-top:8px;">
+                <li><code>:link</code> — สถานะปกติ ยังไม่เคยคลิก</li>
+                <li><code>:visited</code> — เคยคลิกไปแล้ว (ปกติเป็นสีม่วง)</li>
+                <li><code>:hover</code> — ขณะนำเมาส์ไปชี้</li>
+                <li><code>:active</code> — ขณะกำลังกดคลิกค้างไว้</li>
+            </ul>
+        </li>
+        <li><b>การแปลงลิงก์เป็นปุ่มกด:</b> ใช้ <code>text-decoration: none</code> ลบเส้นใต้ ใช้ <code>background-color</code> + <code>padding</code> + <code>border-radius</code> + <code>display: inline-block</code> เนรมิตข้อความลิงก์ธรรมดาให้กลายเป็นปุ่มสวยงาม <span class="page-ref">(p. 8-9)</span></li>
+    </ul>
+
+</div>
+
+</body>
+</html>

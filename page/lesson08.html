@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>บทที่ 8: การออกแบบและสร้างฟอร์ม (Forms)</title>
+<style>
+*{box-sizing:border-box}
+body{font-family:"Sarabun","Tahoma",sans-serif;background:#f5f5f5;margin:0;padding:0 0 60px;color:#222;line-height:1.75}
+.banner{background:#0d3d9c;color:white;padding:24px 32px}
+.banner .chapter{font-size:26px;font-weight:800;margin:0}
+.banner .subtitle{font-size:16px;margin:6px 0 0;font-weight:400}
+.top-bar{max-width:950px;margin:0 auto;padding:14px 20px 0}
+.btn-back{display:inline-flex;align-items:center;gap:7px;text-decoration:none;color:white;background:#28a745;border:1px solid rgba(0,0,0,.2);padding:5px 11px;border-radius:8px;font-size:14px;font-weight:600}
+.content{max-width:950px;margin:0 auto;padding:10px 20px}
+.section-title{background:#e8eefc;color:#0d3d9c;font-size:18px;font-weight:800;padding:6px 12px;border-radius:4px;margin:28px 0 14px}
+ul{margin:0;padding-left:22px;line-height:1.9}
+li{margin-bottom:8px}
+code{background:#eef1f6;padding:1px 6px;border-radius:4px;font-family:Consolas,monospace;color:#b3261e}
+pre{background:#1e1e1e;color:#f1f1f1;padding:16px;border-radius:8px;overflow:auto;line-height:1.55}
+.demo{background:white;border:1px solid #ddd;border-radius:10px;padding:20px;margin:14px 0}
+.demo label{display:block;font-weight:700;margin-top:12px}
+.demo input,.demo select{width:100%;max-width:520px;padding:9px 10px;border:1px solid #bbb;border-radius:6px;margin-top:5px;font:inherit}
+.demo .choice{display:inline-flex;align-items:center;gap:6px;margin:8px 18px 0 0;font-weight:400}
+.demo .choice input{width:auto}
+.demo button{margin-top:16px;padding:9px 18px;border:0;border-radius:7px;background:#0d3d9c;color:#fff;font:inherit;cursor:pointer}
+.note{background:#fff8df;border-left:5px solid #e0a800;padding:12px 15px;border-radius:5px;margin:14px 0}
+table{width:100%;border-collapse:collapse;background:white;margin-top:8px}
+th,td{border:1px solid #ccc;padding:12px;text-align:left;vertical-align:top}
+th{background:#4169e1;color:white;text-align:center}
+@media(max-width:650px){.banner{padding:20px}.banner .chapter{font-size:23px}.content,.top-bar{padding-left:14px;padding-right:14px}th,td{padding:8px}}
+</style>
+</head>
+<body>
+<div class="banner">
+  <p class="chapter">บทที่ 8</p>
+  <p class="subtitle">การออกแบบและสร้างฟอร์ม (Forms)</p>
+</div>
+
+<div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+<div class="content">
+<div class="section-title">1. องค์ประกอบของฟอร์ม</div>
+<p>ฟอร์ม (Forms) เป็นเครื่องมือสำหรับรับข้อมูลจากผู้ใช้งาน แล้วรวบรวมข้อมูลเพื่อส่งต่อให้ระบบหลังบ้าน (Server) ประมวลผล จึงเป็นส่วนสำคัญในการสร้างปฏิสัมพันธ์ระหว่างผู้ใช้งานกับเว็บไซต์</p>
+<ul>
+<li><b>&lt;form&gt;:</b> กำหนดพื้นที่สำหรับชุดข้อมูลที่ต้องการส่ง</li>
+<li><b>action:</b> ระบุ URL หรือเส้นทางของระบบฝั่งเซิร์ฟเวอร์ที่รับข้อมูล</li>
+<li><b>method:</b> กำหนดวิธีการส่งข้อมูล โดยบทเรียนนี้เน้น GET และ POST</li>
+</ul>
+
+<div class="section-title">2. โครงสร้าง &lt;form&gt; และ Action, Method</div>
+<p>แท็ก <code>&lt;form&gt;...&lt;/form&gt;</code> เปรียบเสมือนซองจดหมายที่บรรจุช่องรับข้อมูลและปุ่มส่งข้อมูลเอาไว้ภายใน</p>
+<table>
+<tr><th>Method</th><th>ลักษณะ</th><th>เหมาะกับ</th></tr>
+<tr><td><b>GET</b></td><td>ข้อมูลถูกนำไปต่อท้าย URL และสามารถมองเห็นได้</td><td>ข้อมูลทั่วไป เช่น คำค้นหา</td></tr>
+<tr><td><b>POST</b></td><td>ข้อมูลถูกส่งไว้เบื้องหลัง ไม่แสดงต่อท้าย URL</td><td>ข้อมูลส่วนตัวหรือข้อมูลที่มีปริมาณมาก</td></tr>
+</table>
+
+<pre><code>&lt;form action="process.php" method="post"&gt;
+  ...
+&lt;/form&gt;</code></pre>
+
+<div class="section-title">3. การใช้ &lt;label&gt; คู่กับ &lt;input&gt;</div>
+<p>ควรเชื่อมโยง <code>label</code> กับ <code>input</code> โดยใช้ค่า <code>for</code> ของ label ให้ตรงกับ <code>id</code> ของ input เพื่อเพิ่มความสะดวกในการใช้งานและช่วยด้านการเข้าถึง</p>
+<pre><code>&lt;label for="fullname"&gt;ชื่อ-นามสกุล&lt;/label&gt;
+&lt;input type="text" id="fullname" name="fullname"&gt;</code></pre>
+
+<div class="section-title">4. ประเภทของ Input</div>
+<p>การเปลี่ยนค่า <code>type</code> ของ <code>&lt;input&gt;</code> ทำให้ช่องรับข้อมูลมีหน้าตาและพฤติกรรมแตกต่างกัน</p>
+<table>
+<tr><th>ประเภท</th><th>การใช้งาน</th></tr>
+<tr><td><code>text</code></td><td>ข้อความบรรทัดเดียว เช่น ชื่อ-นามสกุล หรือชื่อเล่น</td></tr>
+<tr><td><code>password</code></td><td>รับรหัสผ่านและพรางตัวอักษรที่พิมพ์</td></tr>
+<tr><td><code>email</code></td><td>รับอีเมลและช่วยตรวจรูปแบบอีเมลเบื้องต้น</td></tr>
+<tr><td><code>radio</code></td><td>เลือกได้เพียงหนึ่งตัวเลือกในกลุ่มเดียวกัน</td></tr>
+<tr><td><code>checkbox</code></td><td>เลือกได้หลายข้อหรือไม่เลือกเลยก็ได้</td></tr>
+<tr><td><code>select / option</code></td><td>เมนูแบบ Dropdown เหมาะกับตัวเลือกจำนวนมาก</td></tr>
+</table>
+
+<div class="section-title">5. ตัวอย่างฟอร์มที่มี Input หลากหลายประเภท</div>
+<div class="demo">
+<form onsubmit="return false">
+<label for="name">ชื่อ-นามสกุล</label>
+<input type="text" id="name" placeholder="กรอกชื่อ-นามสกุล">
+
+<label for="email">อีเมล</label>
+<input type="email" id="email" placeholder="example@email.com">
+
+<label for="password">รหัสผ่าน</label>
+<input type="password" id="password" placeholder="กรอกรหัสผ่าน">
+
+<label>ขนาดเสื้อ</label>
+<label class="choice"><input type="radio" name="size"> S</label>
+<label class="choice"><input type="radio" name="size"> M</label>
+<label class="choice"><input type="radio" name="size"> L</label>
+
+<label>งานอดิเรก</label>
+<label class="choice"><input type="checkbox"> ดูหนัง</label>
+<label class="choice"><input type="checkbox"> ฟังเพลง</label>
+<label class="choice"><input type="checkbox"> อ่านหนังสือ</label>
+
+<label for="province">จังหวัด</label>
+<select id="province">
+<option value="">-- เลือกจังหวัด --</option>
+<option>กรุงเทพมหานคร</option>
+<option>เชียงใหม่</option>
+<option>นครราชสีมา</option>
+<option>ภูเก็ต</option>
+</select>
+</form>
+</div>
+
+<div class="note"><b>หลักการเลือก Input:</b> เลือกเครื่องมือให้ตรงกับลักษณะข้อมูลและคำนึงถึง User Experience (UX) และความถูกต้องของข้อมูล หากต้องเลือกคำตอบเดียวให้ใช้ Radio, ถ้าเลือกได้หลายข้อให้ใช้ Checkbox และถ้ามีตัวเลือกจำนวนมากให้พิจารณา Select</div>
+
+<div class="section-title">6. การตรวจสอบข้อมูล (Validation)</div>
+<p>Validation ทำหน้าที่ตรวจสอบข้อมูลเมื่อผู้ใช้กดส่งฟอร์ม หากข้อมูลไม่ครบหรือไม่ตรงตามเงื่อนไข เบราว์เซอร์จะไม่อนุญาตให้ส่งฟอร์มจนกว่าจะแก้ไขข้อมูลให้ถูกต้อง</p>
+<p>HTML5 มีระบบ Built-in Form Validation ที่ช่วยควบคุมเงื่อนไขได้โดยใช้ Attribute ใน <code>&lt;input&gt;</code></p>
+
+<table>
+<tr><th>Attribute</th><th>หน้าที่</th><th>ตัวอย่าง</th></tr>
+<tr><td><code>required</code></td><td>บังคับให้กรอกข้อมูล</td><td><code>required</code></td></tr>
+<tr><td><code>min</code></td><td>กำหนดค่าต่ำสุด</td><td><code>min="18"</code></td></tr>
+<tr><td><code>max</code></td><td>กำหนดค่าสูงสุด</td><td><code>max="60"</code></td></tr>
+</table>
+
+<div class="section-title">7. ตัวอย่าง Validation</div>
+<pre><code>&lt;form&gt;
+  &lt;label for="age"&gt;อายุ&lt;/label&gt;
+  &lt;input type="number" id="age" min="18" max="60" required&gt;
+
+  &lt;button type="submit"&gt;ส่งข้อมูล&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+<div class="demo">
+<form>
+<label for="demoAge">ทดลองกรอกอายุ (18–60 ปี)</label>
+<input type="number" id="demoAge" min="18" max="60" required>
+<button type="submit">ส่งข้อมูล</button>
+</form>
+</div>
+
+<div class="section-title">8. สรุปท้ายบท</div>
+<ul>
+<li>ใช้ <code>&lt;form&gt;</code> เป็นพื้นที่สำหรับรวบรวมข้อมูลจากผู้ใช้งาน</li>
+<li><code>action</code> ระบุปลายทาง และ <code>method</code> ระบุวิธีการส่งข้อมูล</li>
+<li>GET แสดงข้อมูลต่อท้าย URL ส่วน POST ส่งข้อมูลไว้เบื้องหลัง</li>
+<li>ใช้ <code>&lt;label&gt;</code> คู่กับ <code>&lt;input&gt;</code> เพื่อให้ฟอร์มใช้งานสะดวก</li>
+<li>เลือก Input ให้เหมาะกับข้อมูล เช่น text, password, email, radio, checkbox และ select</li>
+<li>ใช้ <code>required</code>, <code>min</code> และ <code>max</code> เพื่อช่วยตรวจสอบข้อมูลก่อนส่งฟอร์ม</li>
+</ul>
+
+</div>
+</body>
+</html>

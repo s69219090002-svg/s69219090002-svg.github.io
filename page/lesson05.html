@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 5: การจัดการข้อความและสื่อมัลติมีเดีย</title>
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: "Sarabun", "Tahoma", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0 0 60px 0;
+        color: #222;
+    }
+
+    .banner {
+        background-color: #0d3d9c;
+        color: white;
+        padding: 24px 32px;
+    }
+
+    .banner .chapter {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .banner .subtitle {
+        font-size: 16px;
+        margin: 6px 0 0 0;
+        font-weight: 400;
+    }
+
+    .content {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 24px 20px;
+    }
+
+    .section-title {
+        background-color: #e8eefc;
+        color: #0d3d9c;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 4px;
+        margin: 28px 0 14px 0;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.9;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    .page-ref {
+        color: #888;
+        font-size: 13px;
+    }
+
+    code {
+        background-color: #eef1f6;
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-family: "Consolas", monospace;
+        color: #b3261e;
+    }
+    .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: hsl(214, 41%, 97%);
+            background-color: #28a745;
+            border: 1px solid lch(1.92% 0 296.81 / 0.302);
+            padding: 5px 11px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <p class="chapter">บทที่ 5</p>
+    <p class="subtitle">การจัดการข้อความและสื่อมัลติมีเดีย</p>
+</div>
+ <div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+<div class="content">
+
+    <div class="section-title">1. การจัดการข้อความระดับสูง</div>
+    <ul>
+        <li><b>การกำหนดสี (color) และขนาด (font-size):</b> ใช้คำสั่ง <code>color</code> กำหนดสีตัวอักษรได้ทั้งชื่อสีภาษาอังกฤษ, Hex Code (เช่น <code>#FF5733</code>) หรือ RGB และใช้ <code>font-size</code> กำหนดขนาด โดยควรคำนึงถึงลำดับความสำคัญทางสายตา (Visual Hierarchy) <span class="page-ref">(p. 3)</span></li>
+        <li><b>การเชื่อมต่อ Google Fonts:</b> บริการฟอนต์บนคลาวด์ฟรี ช่วยให้เว็บไซต์แสดงฟอนต์สวยงามได้ทุกเครื่อง โดยใช้แท็ก <code>&lt;link&gt;</code> ในส่วน <code>&lt;head&gt;</code> เพื่อดึงฟอนต์มา แล้วเรียกใช้ด้วย <code>font-family</code> ใน CSS <span class="page-ref">(p. 3-4)</span></li>
+    </ul>
+         <img src="../pic/Screenshot 2026-08-17 103925.png" alt="ตัวย่าง" width="800" height="500">
+    
+        
+
+    <div class="section-title">2. การแทรกรูปภาพและสื่อ</div>
+    
+    <ul>
+        <li><b>แท็ก &lt;img&gt;:</b> แท็กเดี่ยว (Empty Tag) ไม่มีแท็กปิด ใช้แสดงรูปภาพ ต้องทำงานร่วมกับแอตทริบิวต์ <code>src</code> เพื่อระบุที่อยู่ไฟล์ภาพเสมอ <span class="page-ref">(p. 6)</span></li>
+        <li><b>Relative Path vs Absolute Path:</b> Relative คือระบุที่อยู่ไฟล์ในโฟลเดอร์โปรเจกต์ตัวเอง (เช่น <code>src="images/coffee.jpg"</code>) เหมาะกับรูปที่เก็บไว้เอง ส่วน Absolute คือ URL เต็มรูปแบบขึ้นต้นด้วย <code>https://</code> ชี้ไปยังรูปบนเว็บอื่น <span class="page-ref">(p. 7)</span></li>
+        <li><b>การจัดการขนาดไฟล์ (Image Optimization):</b> ควรย่อขนาดภาพก่อนใช้งานเสมอ (ความกว้างไม่ควรเกิน 1200px) และเลือกสกุลไฟล์ให้เหมาะกับงาน เช่น <code>.jpg</code> สำหรับภาพถ่าย, <code>.png</code> สำหรับภาพที่ต้องการพื้นหลังโปร่งใส, <code>.webp</code> สำหรับไฟล์ยุคใหม่ที่บีบอัดเล็กแต่คมชัด <span class="page-ref">(p. 8)</span></li>
+    </ul>
+    
+<img src="../pic/Screenshot 2026-08-17 104614.png" alt="ตัวย่าง" width="800" height="500">
+
+    <div class="section-title">3. การจัดการวิดีโอและเสียง</div>
+    <ul>
+        <li><b>แท็ก &lt;video&gt; และ &lt;audio&gt;:</b> HTML5 มีแท็กเฉพาะสำหรับสื่อมัลติมีเดีย ใช้งานคล้ายกัน ต้องระบุ <code>src</code> เพื่อชี้ไปยังไฟล์สื่อ <span class="page-ref">(p. 9)</span></li>
+        <li><b>แอตทริบิวต์ controls:</b> หัวใจสำคัญที่สั่งให้เบราว์เซอร์แสดงแผงควบคุม (เล่น/หยุด, แถบเวลา, ปรับเสียง, ขยายเต็มจอ) หากไม่ใส่ วิดีโอจะเป็นเพียงภาพนิ่งกดเล่นไม่ได้ <span class="page-ref">(p. 9-10)</span></li>
+    </ul>
+
+    <div class="section-title">4. การสร้างเฟรมด้วย Inline Frame (Iframe)</div>
+    <ul>
+        <li><b>แท็ก &lt;iframe&gt;:</b> ใช้ดึงเนื้อหาจากเว็บไซต์อื่นมาแสดงในหน้าเราแบบ "เจาะหน้าต่าง" โดยไม่ต้องพาผู้ใช้ออกจากเว็บ ต้องระบุ <code>src</code> เป็น Absolute Path เสมอ <span class="page-ref">(p. 11)</span></li>
+        <li><b>แอตทริบิวต์สำคัญ:</b> <code>width</code>/<code>height</code> กำหนดขนาดกรอบ, <code>title</code> อธิบายเนื้อหาเพื่อการเข้าถึง (Accessibility), <code>allowfullscreen</code> อนุญาตให้ขยายเต็มจอ <span class="page-ref">(p. 11)</span></li>
+        <li><b>การประยุกต์ใช้จริง:</b> นิยมใช้ฝังวิดีโอ YouTube (Share → Embed) และแผนที่ Google Maps (Share → Embed a map) เพื่อไม่ต้องเปลืองพื้นที่เซิร์ฟเวอร์ของตัวเอง <span class="page-ref">(p. 12)</span></li>
+    </ul>
+
+</div>
+
+</body>
+</html>

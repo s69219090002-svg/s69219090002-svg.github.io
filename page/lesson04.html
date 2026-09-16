@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 4: การจัดรูปแบบเว็บไซต์ด้วย CSS</title>
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: "Sarabun", "Tahoma", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0 0 60px 0;
+        color: #222;
+    }
+
+    .banner {
+        background-color: #0d3d9c;
+        color: white;
+        padding: 24px 32px;
+    }
+
+    .banner .chapter {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .banner .subtitle {
+        font-size: 16px;
+        margin: 6px 0 0 0;
+        font-weight: 400;
+    }
+
+    .content {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 24px 20px;
+    }
+
+    .section-title {
+        background-color: #e8eefc;
+        color: #0d3d9c;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 4px;
+        margin: 28px 0 14px 0;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.9;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    code {
+        background-color: #eef1f6;
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-family: "Consolas", monospace;
+        color: #b3261e;
+    }
+    .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            text-decoration: none;
+            color: hsl(214, 41%, 97%);
+            background-color: #28a745;
+            border: 1px solid lch(1.92% 0 296.81 / 0.302);
+            padding: 5px 11px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <p class="chapter">บทที่ 4</p>
+    <p class="subtitle">การจัดรูปแบบเว็บไซต์ด้วย CSS</p>
+</div>
+ <div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+<div class="content">
+
+    <div class="section-title">1. พื้นฐานและการเชื่อมต่อ CSS</div>
+    <ul>
+        <li><b>Internal CSS (สไตล์ชีตภายใน):</b> เขียนแทรกในไฟล์ HTML ภายใต้แท็ก <code>&lt;style&gt;</code> เหมาะกับเว็บหน้าเดียวหรือขนาดเล็ก แต่ส่งผลให้เกิดโค้ดซ้ำซ้อนถ้ามีหลายหน้า</li>
+        <li><b>External CSS (สไตล์ชีตภายนอก):</b> แยกไฟล์ต่างหากเป็นนามสกุล .css แล้วดึงมาใช้ผ่านแท็ก <code>&lt;link&gt;</code> เป็นวิธีมาตรฐานระดับมืออาชีพเพราะช่วยให้แก้ไขจุดเดียวแล้วอัปเดตพร้อมกันทั้งเว็บไซต์</li>
+        <li><b>CSS Selectors:</b> เครื่องมือชี้เป้าหมายเพื่อตกแต่งองค์ประกอบ ประกอบด้วย Tag Selector (กว้างที่สุด เปลี่ยนทุกแท็กที่ระบุ), Class Selector (ใช้จุด <code>.</code> นำหน้า เหมาะสำหรับจัดกลุ่มเฉพาะกิจ) และ ID Selector (ใช้แฮชแท็ก <code>#</code> เจาะจงที่สุด ห้ามซ้ำกันในหนึ่งหน้า)</li>
+    </ul>
+     <img src="../pic/gg1.png" alt="ตัวย่าง" width="600" height="500">
+
+
+    <div class="section-title">2. ระบบ Box Model (ทฤษฎีกล่อง)</div>
+    <p>เบราว์เซอร์จะมองทุกองค์ประกอบบนหน้าเว็บเป็นกล่องสี่เหลี่ยม ซึ่งประกอบด้วยพื้นที่ 4 ชั้นหลักจากด้านในออกด้านนอก</p>
+    <ul>
+        <li><b>Content:</b> พื้นที่เนื้อหาที่แท้จริง กำหนดขนาดได้ด้วยความกว้าง (Width) และความสูง (Height)</li>
+        <li><b>Padding (พื้นที่ใน):</b> ระยะห่างระหว่างเนื้อหากับเส้นขอบกล่อง เปรียบเสมือน "พลาสติกกันกระแทก"</li>
+        <li><b>Border (เส้นขอบ):</b> กำแพงกั้นระหว่างพื้นที่ด้านในและด้านนอก เปรียบเสมือน "กรอบรูป"</li>
+        <li><b>Margin (พื้นที่นอก):</b> ระยะห่างภายนอกกล่องที่ใช้ผลักกล่องอื่นออกไป เปรียบเสมือน "การเว้นระยะห่างทางสังคม"</li>
+    </ul>
+    <img src="../pic/gg2.png" alt="ตัวย่าง" width="600" height="500">
+
+    <div class="section-title">3. การจัดตำแหน่ง (Layout Positioning)</div>
+    <p>เทคนิคควบคุมพิกัดและการจัดวางกล่องข้อความหรือวัตถุต่าง ๆ บนหน้าจอ</p>
+    <ul>
+        <li><b>Display:</b> กำหนดพฤติกรรมการกินพื้นที่ของกล่อง เช่น Block (จองพื้นที่เต็ม 100% ของบรรทัด), Inline (ใช้พื้นที่เท่าขนาดเนื้อหาจริง วางเรียงต่อกันได้) และ Flex (เวทมนตร์จัดเลย์เอาต์ยุคใหม่ที่ช่วยจัดเรียงวัตถุภายในให้ยืดหยุ่น กระจายตัว หรืออยู่กึ่งกลางได้อย่างง่ายดาย)</li>
+        <li><b>Position:</b> ดึงกล่องหลุดออกจากระบบระเบียบปกติเพื่อระบุพิกัดตรง ๆ เช่น Relative (ขยับจากจุดเดิมโดยเว้นที่ว่างเดิมไว้), Absolute (หลุดจากวงโคจรปกติเพื่อแปะทับบนกล่องแม่) และ Fixed (ตอกตะปูยึดติดกับหน้าจอ ไม่ขยับไปไหนแม้จะเลื่อนสกอลล์เม้าส์ เช่น แถบเมนู Navbar ด้านบน)</li>
+    </ul>
+    <img src="../pic/gg3.png" alt="ตัวย่าง" width="600" height="500">
+
+</div>
+
+</body>
+</html> 

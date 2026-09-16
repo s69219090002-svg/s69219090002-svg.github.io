@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>บทที่ 9: JavaScript สมองกลผู้เนรมิตชีวิตให้เว็บไซต์</title>
+<style>
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: "Sarabun", "Tahoma", sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 0 0 60px 0;
+        color: #222;
+    }
+
+    .banner {
+        background-color: #0d3d9c;
+        color: white;
+        padding: 24px 32px;
+    }
+
+    .banner .chapter {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    .banner .subtitle {
+        font-size: 16px;
+        margin: 6px 0 0 0;
+        font-weight: 400;
+    }
+
+    .top-bar {
+        padding: 12px 20px 0 20px;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+
+    .content {
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 24px 20px;
+    }
+
+    .section-title {
+        background-color: #e8eefc;
+        color: #0d3d9c;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 6px 12px;
+        border-radius: 4px;
+        margin: 28px 0 14px 0;
+    }
+
+    ul {
+        margin: 0;
+        padding-left: 22px;
+        line-height: 1.9;
+    }
+
+    li {
+        margin-bottom: 8px;
+    }
+
+    code {
+        background-color: #eef1f6;
+        padding: 1px 6px;
+        border-radius: 4px;
+        font-family: "Consolas", monospace;
+        color: #b3261e;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: white;
+        margin-top: 8px;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 12px;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    th {
+        background-color: #4169e1;
+        color: white;
+        font-size: 16px;
+    }
+
+    td:first-child {
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        text-decoration: none;
+        color: hsl(214, 41%, 97%);
+        background-color: #28a745;
+        border: 1px solid lch(1.92% 0 296.81 / 0.302);
+        padding: 5px 11px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: background-color 0.15s ease;
+    }
+
+    .lesson-img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        margin: 16px auto;
+        border-radius: 6px;
+    }
+</style>
+</head>
+<body>
+
+<div class="banner">
+    <p class="chapter">บทที่ 9</p>
+    <p class="subtitle">JavaScript สมองกลผู้เนรมิตชีวิตให้เว็บไซต์</p>
+</div>
+
+<div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+<div class="content">
+
+    <div class="section-title">1. เปรียบเทียบองค์ประกอบการสร้างหุ่นยนต์ (HTML, CSS, JavaScript)</div>
+    <p>เปลี่ยนหน้าเว็บที่ตายตัวให้กลายเป็นแอปพลิเคชันที่มีชีวิตชีวาและโต้ตอบได้แบบเรียลไทม์[cite: 1] โดยแบ่งบทบาทหน้าที่ตามโครงสร้างหุ่นยนต์ดังนี้:</p>
+    <ul>
+        <li><b>โครงเหล็ก (HTML):</b> โครงสร้างและชิ้นส่วนพื้นฐานที่ประกอบกันเป็นรูปร่าง (Structure)[cite: 1]</li>
+        <li><b>เสื้อผ้าและสีสัน (CSS):</b> การตกแต่งผิวภายนอกให้ดูสวยงามและเป็นระเบียบ (Presentation)[cite: 1]</li>
+        <li><b>สมองกล (JavaScript):</b> ระบบไฟฟ้าที่สั่งการให้ขยับ โต้ตอบ และมีความคิด (Behavior)[cite: 1]</li>
+    </ul>
+    
+
+    <div class="section-title">2. การติดตั้งสคริปต์เพื่อปลุกชีพสมองกล</div>
+    <p>การเขียนโค้ด JavaScript เข้ากับหน้าเว็บ HTML สามารถทำได้ 2 รูปแบบหลัก[cite: 1]:</p>
+    <table>
+        <tr>
+            <th>รูปแบบ</th>
+            <th>วิธีเขียน</th>
+            <th>การเปรียบเทียบ</th>
+            <th>การนำไปใช้งาน</th>
+        </tr>
+        <tr>
+            <td>Internal Script (การเขียนแบบภายใน)[cite: 1]</td>
+            <td>พิมพ์โค้ดลงในแท็ก <code>&lt;script&gt;</code> วางไว้ก่อนปิด <code>&lt;/body&gt;</code>[cite: 1]</td>
+            <td>โน้ตคำสั่งสั้นๆ แปะไว้บนตู้เย็น[cite: 1]</td>
+            <td>เหมาะกับโค้ดขนาดเล็ก ที่ทำงานเฉพาะเจาะจงแค่หน้าเว็บเดียว[cite: 1]</td>
+        </tr>
+        <tr>
+            <td>External Script (การเชื่อมไฟล์ภายนอก)[cite: 1]</td>
+            <td>สร้างไฟล์ <code>.js</code> แยก แล้วเชื่อมด้วย <code>&lt;script src='main.js'&gt;&lt;/script&gt;</code>[cite: 1]</td>
+            <td>คู่มือการทำงานแยกเป็นเล่มต่างหาก[cite: 1]</td>
+            <td>มาตรฐานมืออาชีพ โค้ดสะอาด นำไปใช้ร่วมกับหน้าเว็บอื่นๆ ได้ทันที[cite: 1]</td>
+        </tr>
+    </table>
+  
+
+    <div class="section-title">3. ช่องทางการสื่อสารของ JavaScript</div>
+    <p>เครื่องมือที่ใช้ส่งข้อความแสดงผลเพื่อโต้ตอบกับผู้ใช้หรือทดสอบระบบ[cite: 1]:</p>
+    <ul>
+        <li><b>alert() (กล่องป๊อปอัปแจ้งเตือน):</b> เด้งขึ้นมากลางหน้าจอ บังคับให้ผู้ใช้กด OK ส่งผลให้หยุดการทำงานของเว็บทั้งหมดชั่วคราว เหมาะสำหรับผู้ใช้งานทั่วไป (User)[cite: 1]</li>
+        <li><b>console.log() (ข้อความลับหลังบ้าน):</b> พิมพ์ข้อความลงในเครื่องมือ Console (F12) ทำงานเงียบๆ ไม่รบกวนการอ่านเว็บ เหมาะสำหรับนักพัฒนาโปรแกรม (Developer) เพื่อทดสอบโค้ด[cite: 1]</li>
+    </ul>
+    
+
+    <div class="section-title">4. DOM (Document Object Model): แผงควบคุมวงจรไฟฟ้าของเว็บไซต์</div>
+    <p>กลไกสำคัญที่ทำให้ JavaScript สั่งงานและเปลี่ยนแปลงองค์ประกอบของหน้าเว็บได้[cite: 1]:</p>
+    <ul>
+        <li><b>1. การแปลงร่างของ HTML:</b> ทันทีที่เบราว์เซอร์อ่านโค้ดเสร็จ จะสร้าง DOM ขึ้นมาครอบทับเว็บไซต์[cite: 1]</li>
+        <li><b>2. สวิตช์และปุ่มกด:</b> แท็ก HTML ทุกตัวจะถูกจำลองเป็นสวิตช์บนแผงควบคุม (เช่น <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;button&gt;</code>)[cite: 1]</li>
+        <li><b>3. หน้าที่ของ JavaScript:</b> เอื้อมมือเข้าไปสับสวิตช์ สั่งให้หน้าเว็บขยับหรือเปลี่ยนสีได้แบบเรียลไทม์โดยไม่ต้องกดรีเฟรช[cite: 1]</li>
+    </ul>
+   
+
+    <div class="section-title">5. ขั้นตอนการควบคุมและแก้ไขหน้าเว็บ (DOM Manipulation)</div>
+    <ul>
+        <li><b>ขั้นตอนที่ 1 - ล็อกเป้าหมายด้วย getElementById:</b> ใช้คำสั่ง <code>document.getElementById('id-name')</code> เปรียบเสมือน "การประกาศเรียกชื่อพนักงานผ่านเสียงตามสาย" เพื่อดึงแท็ก HTML ออกมารอรับคำสั่ง[cite: 1]</li>
+        <li><b>ขั้นตอนที่ 2 - เปลี่ยนแปลงความจริงด้วย .innerHTML:</b> ใช้คำสั่ง <code>.innerHTML = 'ข้อความใหม่';</code> เปรียบเสมือน "การเดินไปที่กระดานไวท์บอร์ด ลบข้อความเดิมทิ้งจนหมด แล้วเขียนข้อความใหม่ทับลงไป" ทำให้ข้อมูลเปลี่ยนทันทีโดยไม่ต้องโหลดหน้าเว็บใหม่[cite: 1]</li>
+        <li><b>ขั้นตอนที่ 3 - ตัวกระตุ้นการทำงาน (The onclick Event):</b> ระบุ <code>onclick="..."</code> บนปุ่ม เพื่อรับสัญญาณกริ่งแจ้งเตือนเมื่อผู้ใช้กดคลิก และสั่งให้ฟังก์ชัน (Function) ทำงานทันที[cite: 1]</li>
+    </ul>
+    
+
+    <div class="section-title">6. การรับรู้และดักจับพฤติกรรมผู้ใช้ (User Events)</div>
+    <p>JavaScript สามารถดักจับเหตุการณ์ต่าง ๆ ที่เกิดจากเมาส์และคีย์บอร์ดได้[cite: 1]:</p>
+    <table>
+        <tr>
+            <th>ประเภท Event</th>
+            <th>ชื่อคำสั่ง</th>
+            <th>พฤติกรรมและการทำงาน</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Mouse Events[cite: 1]</td>
+            <td><code>onmouseover</code>[cite: 1]</td>
+            <td>ทำงานทันทีเมื่อนำเมาส์ 'ลากไปวางพาด' (ยังไม่คลิก) ใช้เพื่อดึงดูดความสนใจ[cite: 1]</td>
+        </tr>
+        <tr>
+            <td><code>onmouseout</code>[cite: 1]</td>
+            <td>ทำงานทันทีเมื่อลากเมาส์ 'ออกจากวัตถุ' ใช้คืนค่ารูปลักษณ์เดิม[cite: 1]</td>
+        </tr>
+        <tr>
+            <td rowspan="2">Keyboard Events[cite: 1]</td>
+            <td><code>onkeydown</code>[cite: 1]</td>
+            <td>ทำงานในเสี้ยววินาทีที่ 'กดปุ่มลงไป'[cite: 1]</td>
+        </tr>
+        <tr>
+            <td><code>onkeyup</code>[cite: 1]</td>
+            <td>ทำงานทันทีเมื่อ 'ปล่อยนิ้วขึ้น' เหมาะสำหรับการตรวจสอบข้อมูลแบบสดๆ (Real-time) ขณะพิมพ์[cite: 1]</td>
+        </tr>
+    </table>
+    
+
+    <div class="section-title">7. วงจรแห่งการโต้ตอบ (The Interactive Loop)</div>
+    <p>สรุปการทำงานร่วมกันเป็นขั้นตอนในการประมวลผลของ JavaScript[cite: 1]:</p>
+    <ul>
+        <li><b>1. ตัวกระตุ้น (The Trigger):</b> ผู้ใช้งานกระทำพฤติกรรมบางอย่าง เช่น การคลิก หรือพิมพ์ (<code>onclick</code>, <code>onkeyup</code>)[cite: 1]</li>
+        <li><b>2. ล็อกเป้าหมาย (The Radar):</b> JS สแกนหา DOM ด้วยคำสั่ง เช่น <code>getElementById</code> เพื่อระบุชิ้นส่วนที่ต้องจัดการ[cite: 1]</li>
+        <li><b>3. สมองกลประมวลผล (The Logic):</b> เรียกใช้ Function นำค่า (<code>.value</code>) มาตรวจสอบเงื่อนไข[cite: 1]</li>
+        <li><b>4. อัปเดตหน้าจอ (The Update):</b> เปลี่ยนแปลงเนื้อหาหรือสีสันบนหน้าจอทันทีแบบ Real-time ด้วยคำสั่ง เช่น <code>.innerHTML</code>[cite: 1]</li>
+    </ul>
+
+</div>
+
+</body>
+</html>

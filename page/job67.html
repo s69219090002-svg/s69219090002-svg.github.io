@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แนะนำตัว - จิตติพัฒน์ นามเดช</title>
+
+    <!-- Font Awesome สำหรับไอคอนโซเชียล -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: hwb(220 73% 21%);
+            background-image:
+                radial-gradient(circle at 15% 10%, rgba(165, 111, 99, 0.20), transparent 35%),
+                radial-gradient(circle at 85% 90%, rgba(217, 155, 127, 0.12), transparent 40%);
+            color: #000000;
+            font-family: "Sarabun", "Tahoma", sans-serif;
+            margin: 0;
+            padding: 24px 20px 48px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .top-bar {
+            width: 100%;
+            max-width: 640px;
+            margin-bottom: 16px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #eef1f6;
+            background-color: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-back:hover {
+            background-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 640px;
+            background-color: hsl(218, 32%, 88%);
+            border: 1px solid rgba(217, 155, 127, 0.35);
+            border-radius: 16px;
+            padding: 40px 36px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            background-color: #0056b3;
+            border: 3px solid #0056b3;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        h1 {
+            color: #0056b3;
+            font-size: 30px;
+            margin: 0 0 4px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .slogan {
+            display: inline-block;
+            color: #0a2530;
+            background-color: #0056b3;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 999px;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            color: #0056b3;
+            font-size: 15px;
+            margin: 8px 0 0 0;
+        }
+
+        section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(217, 155, 127, 0.28);
+        }
+
+        section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        h2 {
+            color: #0056b3;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 12px 0;
+        }
+
+        p {
+            color: hsl(180, 100%, 0%);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        ul, ol {
+            margin: 0;
+            padding-left: 20px;
+            color: hsl(0, 0%, 0%);
+            line-height: 2;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li::before {
+            content: "▸";
+            color: #0056b3;
+            margin-right: 8px;
+        }
+
+        ol li::marker {
+            color: #0056b3;
+            font-weight: 700;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 32px;
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: hsl(0, 0%, 0%);
+            margin-bottom: 8px;
+            font-size: 14.5px;
+        }
+
+        .contact-line i {
+            color: #0056b3;
+            width: 18px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 22px;
+            font-size: 14px;
+            background-color: transparent;
+            color: #333333;
+            border: 1.5px solid #333333;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        button:hover {
+            background-color: #333333;
+            color: #17a2b8;
+        }
+
+        .socials {
+            display: flex;
+            gap: 14px;
+            margin-top: 20px;
+        }
+
+        .socials a {
+            color: #0056b3;
+            font-size: 30px;
+            transition: color 0.15s ease, transform 0.15s ease;
+            line-height: 1;
+        }
+
+        .socials a:hover {
+            transform: translateY(-2px);
+        }
+
+        .fa-square-facebook:hover {
+            color: #1877f2;
+        }
+
+        .fa-square-instagram:hover {
+            color: #e1306c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        <a class="btn-back" href="../htdoc/index.html">
+            <i class="fa-solid fa-arrow-left"></i> กลับหน้าหลัก
+        </a>
+    </div>
+
+    <div class="card">
+
+        <section>
+            <div class="avatar"><img src="../pic/eeeeeee.jpg" alt="รูปโปรไฟล์"></div>
+            <h1>จิตติพัฒน์ นามเดช</h1>
+            <span class="slogan">ราชา Roblox</span>
+            <p class="tagline">เป็นคนที่ชอบเล่นคอมและเล่นเกม</p>
+        </section>
+
+        <section>
+            <h2>เรื่องเกี่ยวกับตัวเอง</h2>
+            <p>เป็นคนนี้ชอบเล่นคอมและเล่นเกม</p>
+        </section>
+
+        <section>
+            <h2>ทักษะ</h2>
+            <div class="skills-grid">
+                <ul>
+                    <li>รู้จักคอมพิวเตอร์ดี</li>
+                    <li>ทำอาหารได้</li>
+                    <li>เล่นเกมโหด</li>
+                </ul>
+                <ol type="1" start="1">
+                    <li>มีเงิน</li>
+                    <li>มีงาน</li>
+                    <li>มีคอมแรงๆ</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2>ข้อมูลสำหรับติดต่อ</h2>
+            <div class="contact-line">
+                <i class="fa-solid fa-envelope"></i> pot.namdech@gmail.com
+            </div>
+            <div class="contact-line">
+                <i class="fa-solid fa-phone"></i> 0828827898
+            </div>
+
+            <div class="actions">
+                <button onclick="window.open('Introduce yourself.html')">รูป</button>
+                <button onclick="window.open('Introduce yourself.html')">วิดีโอ</button>
+            </div>
+
+            <div class="socials">
+                <a href="https://www.facebook.com/pornpot.namdech.2024" target="_blank">
+                    <i class="fa-brands fa-square-facebook"></i>
+                </a>
+                <a href="https://www.instagram.com/pot.namdech/" target="_blank">
+                    <i class="fa-brands fa-square-instagram"></i>
+                </a>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
